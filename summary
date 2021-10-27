@@ -1,0 +1,3 @@
+#lesson 1#
+//vue templating syntax {{}}
+//v-model->used for two way data binding with inputs
