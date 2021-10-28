@@ -9,7 +9,12 @@
 <body>
     <div id="shopping-list">
         <h1>{{header}}</h1>
-        <input type="text" v-model="header" name="" id=""> 
+        <ul>
+            //but for better performane we should add a key its not necessary but good practice
+            <li v-for="(item,index) in items" :key="item.id">{{index}} {{item.name}}</li>
+            
+        </ul>
+       
     </div>
     
     <script src="https://unpkg.com/vue@3"></script>
@@ -17,7 +22,8 @@
         Vue.createApp({
             data(){
                 return {
-                    header:"Vue is ready to party!"
+                    header:"Rendering a list",
+                    items :[{id:"cat",name:"eela"},{id:"dog",name:"jack"},{id:"fish",name:"marina"}]
                 }
             }
         }).mount('#shopping-list');
