@@ -1,3 +1,19 @@
 #lesson 1#
 //vue templating syntax {{}}
 //v-model->used for two way data binding with inputs
+
+#lesson 2#
+//vue devTools:
+// syntax-> $vm.data.header
+// will help in our routing and vuex store also
+
+#lesson 3
+//{{}} => has a linitation that 
+//1. it can hold only one js expression
+//2. we cant declare variables
+//3. we cant use if statements 
+
+#lesson-4
+//using V-for directive for list rendering
+
+//<li v-for="item in items" :key="item.id">{{item.label}}</li>

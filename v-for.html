@@ -8,10 +8,12 @@
 </head>
 <body>
     <div id="shopping-list">
-        <h1>{{header.toUpperCase()}}</h1>
-        <h1>{{header? header: "welcome"}}</h1>
-        <h1>{{header || "welcome"}}</h1>
-        <input type="text" v-model="header" name="" id="">
+        <h1>{{header}}</h1>
+        <ul>
+            <li v-for="item in items">{{item}}</li>
+            //but for better performane we should add a key its not necessary but good practice
+        </ul>
+       
     </div>
     
     <script src="https://unpkg.com/vue@3"></script>
@@ -19,7 +21,8 @@
         Vue.createApp({
             data(){
                 return {
-                    header:""
+                    header:"Rendering a list",
+                    items :["chocolates","buiscuit","poppins","perk"]
                 }
             }
         }).mount('#shopping-list');
