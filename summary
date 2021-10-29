@@ -31,4 +31,26 @@
 
 #lesson-7-using methods
 //we define methods in a vue option called methods,similar to the data option 
-//in our methods, we donot have automatically access to our vue instance data like we used to have directly in our inline v-on's, so we need to explicitly reference it using this keyword
+//in our methods, we donot have automatically access to our vue instance data like we used to have directly in our inline js expressions inside our v-on, so we need to explicitly reference it using this keyword
+
+#lesson 8
+//vue provides us with vif and v-else directives for conditional rendering
+
+#lesson 9- HTML Attribute binding
+//we can couple any html attribute to our data using V-bind
+//example <a v-bind:href="newItem">click here</a>
+
+#lesson 10 -dynamic css binding
+//we can add dynamic classes with class binding using two different syntaxes:
+// 1.Object Syntax  2.Array Syntax
+// object Syntax: it is better if we dont have multiple classes to add. syntax -> :class="{strikeout : item.purchased}-here the key is the class and the value is the condition for applying that particular class
+// Array Syntax:Useful while we have multiple calsses to add--->:class="[item.purchased? 'strikeout':'']"
+
+#lesson 11 -computed properties
+//vue provides another feature known as computed properties that lets us tranformations/calculations on our data
+//it computes in realtime
+//Syntax  computed:{
+                characterCount(){
+                    return this.textInput.length
+                }
+            }

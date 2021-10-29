@@ -10,18 +10,19 @@
 <body>
     <div id="shopping-list">
         <h1>{{header || 'Welcome'}}</h1>
-        <input type="text" @keyup.enter="saveItem" v-model="newItem">
-        <button @click="saveItem">ADD</button>
-        <input type="checkbox" v-model="highPriority" name="HighPriority" id="high">
-        <label for="high">High Priority</label>
+        <input  v-if="editing" type="text" @keyup.enter="saveItem" v-model="newItem">
+        <button v-if="editing" @click="saveItem">ADD</button>
+        <input v-if="editing" type="checkbox" v-model="highPriority" name="HighPriority" id="high">
+        <label v-if="editing" for="high">High Priority</label>
         {{newItem}} | {{highPriority? "High":"low"}}
+
+        <p v-if="items.length==0">Nice! You have completed your shopping</p>
 
         <ul>
            
             <li v-for="item in items" :key="item.id">{{item.id}} {{item.name}}</li>
             
         </ul>
-       
        
     </div>
     
@@ -31,9 +32,10 @@
             data(){
                 return {
                     header:"Shopping-list",
-                    items :[{id:"1",name:"chocolates"},{id:"2",name:"Milk"},{id:"3",name:"Banana"}],
+                    items :[],
                     highPriority:false,
-                    newItem:""
+                    newItem:"",
+                    editing:true
                 }
             },
             methods:{

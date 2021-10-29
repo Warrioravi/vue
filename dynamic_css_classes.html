@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,23 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .strikeout{
+              text-decoration: line-through;
+            }
+            .priorityHigh{
+              color:red;
+            }
+    </style>
 </head>
 <body>
     <div id="shopping-list">
         <h1>{{header || 'Welcome'}}</h1>
-        <input type="text" @keyup.enter="saveItem" v-model="newItem">
-        <button @click="saveItem">ADD</button>
-        <input type="checkbox" v-model="highPriority" name="HighPriority" id="high">
-        <label for="high">High Priority</label>
+        <input  v-if="editing" type="text" @keyup.enter="saveItem" v-model="newItem">
+        <button v-if="editing" @click="saveItem">ADD</button>
+        <input v-if="editing" type="checkbox" v-model="highPriority" name="HighPriority" id="high">
+        <label v-if="editing" for="high">High Priority</label>
         {{newItem}} | {{highPriority? "High":"low"}}
+
+        <p v-if="items.length==0">Nice! You have completed your shopping</p>
 
         <ul>
            
-            <li v-for="item in items" :key="item.id">{{item.id}} {{item.name}}</li>
+            <li v-for="item in items" :key="item.id" :class="{strikeout : item.purchased}" :class="[item.purchased? 'strikeout':'']">{{item.id}} {{item.name}}</li>
             
         </ul>
-       
+        <a v-bind:href="newItem">click here</a>
        
     </div>
     
@@ -31,9 +43,14 @@
             data(){
                 return {
                     header:"Shopping-list",
-                    items :[{id:"1",name:"chocolates"},{id:"2",name:"Milk"},{id:"3",name:"Banana"}],
+                    items: [
+                        { id: 1, name: "bananas" ,purchased:true}, 
+                        { id: 2, name: "grapes",purchased:true },
+                        { id: 3, name: "chocolates",purchased:false }
+                    ],
                     highPriority:false,
-                    newItem:""
+                    newItem:"",
+                    editing:true
                 }
             },
             methods:{
