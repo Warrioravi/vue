@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="shopping-list">
+        <h1>{{header}}</h1>
+        <input  v-on:keyup.enter="items.push(newItem)" type="text" v-model="newItem" placeholder="place an item">
+
+        <button v-on:click="items.push(newItem)" style="margin: 5px;">Add item</button>
+       
+       
+        {{newItem}} 
+        <ul>
+            <li v-for="item in items">{{item}}</li>
+        </ul>
+       
+       
+    </div>
+    
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    header:"Rendering a list",
+                    items :["chocolates","buiscuit","poppins","perk"],
+                    newItem:"",
+                   
+                }
+            }
+        }).mount('#shopping-list');
+    </script>
+    
+</body>
+</html>

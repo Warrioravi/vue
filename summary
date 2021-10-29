@@ -26,3 +26,9 @@
 
 #lesson 6 - Event Handling
 //using v-on directive for handling events
+//we can attach handlerslike this =>  <input  v-on:keyup.enter="items.push(newItem)" type="text" v-model="newItem" placeholder="place an item">
+// we can also write  v-on:keyup.enter, v-on:click as  @keyup.enter, @click
+
+#lesson-7-using methods
+//we define methods in a vue option called methods,similar to the data option 
+//in our methods, we donot have automatically access to our vue instance data like we used to have directly in our inline v-on's, so we need to explicitly reference it using this keyword
