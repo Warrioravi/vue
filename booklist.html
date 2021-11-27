@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+   li{
+       height: 20vh;
+       background-color: rgba(20, 109, 182, 0.534);
+       margin: 20px;
+       list-style-type: none;
+       font-size: x-large;
+       border-radius: 20px;
+       
+
+   }
+   li>div{
+    display: flex;
+       align-items: center;
+       font-family:monospace;
+
+
+   }
+   img{
+       max-height: 20vh;
+       margin-left: 5vw;
+       margin-right: 5vw;
+       
+   }
+   .fav{
+       background-color: rgba(206, 17, 174, 0.425);
+   }
+    </style>
+</head>
+<body>
+   <h1>The best booklist</h1> 
+   <div id="app">
+       <!-- //attribute binding and dynamic classes using v-bind -->
+      <ul>
+          <li v-for="book in books" :class="{fav:book.isFav}" @dblclick="favHandler(book)">
+              <div> 
+                  <img :src="book.image" alt="">
+              <p> Title={{book.name}} Author={{book.author}}</p>
+              </div>
+            </li>
+      </ul>
+ 
+   </div>
+   <script src="booklist.js"></script>
+</body>
+</html>

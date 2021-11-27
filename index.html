@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+      .box{
+        height: 20vh;
+        width: 20vw ;
+        background-color: aliceblue;
+        margin: 20px;
+      }
+    </style>
+</head>
+<body>
+   <h1>Hello Vue!</h1> 
+   <div id="app">
+     <p>{{title}}-{{author}}</p>
+     <p v-if='showAge'>My age is --- {{age}}</p>
+     <button v-on:click='increase'>age +</button>
+     <button v-on:click='age--'>age -</button>
+     <button v-on:click='changeTitle'>change title</button>
+     <button v-on:click='changeVisibility'>
+     <span v-if='showAge'>Hide Age</span>
+     <span v-else>Show Age</span>
+     </button>
+     <!--MOUSE EVENTS-->
+     <div @mouseover='handleEvent' class="box">Mouseover</div>
+     <div @mouseleave='handleEvent' class="box">Mouseleave</div>
+     <div @dblclick='handleEvent' class="box">Double click</div>
+     <div @mousemove='handleMouseMove' class="box">x={{x}},y={{y}}</div>
+
+   </div>
+   <script src="script.js"></script>
+</body>
+</html>
